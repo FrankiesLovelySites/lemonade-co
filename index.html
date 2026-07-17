@@ -15,12 +15,13 @@
             height: 100%;
             font-family: 'Raleway', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: #ffffff;
-            overflow: hidden;
+            background-color: #0d0d11; /* Fallback background for scrolling */
+            scroll-behavior: smooth;
         }
 
         .bgimg {
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://beyondstagelighting.com/wp-content/uploads/2025/04/Baoliang-Sha-Baoji-Concert-Cover.jpg');
-            height: 100%;
+            height: 100vh;
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -82,11 +83,128 @@
             animation: fadeIn 1.5s ease-out 0.8s forwards;
         }
 
+        /* Scroll Down Link */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 1.2s forwards;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            padding-bottom: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .scroll-down:hover {
+            border-color: #ffffff;
+        }
+
+        /* ==========================================
+           Changelog Section Styling
+           ========================================== */
+        .changelog-section {
+            padding: 80px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .changelog-section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        /* Changelog Timeline Card */
+        .changelog-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .changelog-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Header (Version & Date) */
+        .changelog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .version-tag {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffd700; /* Subtle gold accent */
+            letter-spacing: 0.5px;
+        }
+
+        .changelog-date {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .changelog-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+        }
+
+        /* Before/After Images Grid */
+        .changelog-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .image-box {
+            position: relative;
+            background: #1a1a24;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 16 / 9; /* Keeps layout proportional */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-label {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
         /* Animations */
         @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+            to { opacity: 1; }
         }
 
         @keyframes slideDown {
@@ -96,7 +214,7 @@
             }
         }
 
-        /* Responsive adjustments for mobile screens */
+        /* Responsive adjustments */
         @media (max-width: 600px) {
             .content h1 {
                 font-size: 2.5rem;
@@ -109,6 +227,16 @@
                 top: 15px;
                 left: 15px;
                 font-size: 1.25rem;
+            }
+            .changelog-section h2 {
+                font-size: 2rem;
+            }
+            .changelog-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .changelog-images {
+                grid-template-columns: 1fr; /* Stacks images on mobile */
             }
         }
     </style>
@@ -124,8 +252,56 @@
             <p class="contact-info">Discord: Lemonade_dev &nbsp;|&nbsp; Phone: +44 7934 906648 &nbsp;|&nbsp; Mail: frankie@lemonade-co.site</p>
         </div>
         
+        <a href="#changelogs" class="scroll-down">View Changelogs</a>
     </div>
     
+    <section id="changelogs" class="changelog-section">
+        <h2>Changelogs</h2>
+
+        <div class="changelog-card">
+            <div class="changelog-header">
+                <span class="version-tag">v1.2.0</span>
+                <span class="changelog-date">July 17, 2026</span>
+            </div>
+            
+            <p class="changelog-description">
+                Edited website name, new contact method, changed "Us" to "Me", new backround image, added changelog section.
+            </p>
+
+            <div class="changelog-images">
+                <div class="image-box">
+                    <img src="https://i.ibb.co/B5z4ppSW/Screenshot-2026-07-17-12-00-33-PM.png" alt="Before update layout">
+                    <span class="image-label">Before</span>
+                </div>
+                <div class="image-box">
+                    <img src="https://i.ibb.co/fzVn3CtQ/Screenshot-2026-07-17-12-10-41-PM.png alt="After update layout">
+                    <span class="image-label">After</span>
+                </div>
+            </div>
+        </div>
+        <div class="changelog-card">
+            <div class="changelog-header">
+                <span class="version-tag">v1.1.0</span>
+                <span class="changelog-date">June 7, 2026</span>
+            </div>
+            
+            <p class="changelog-description">
+                Replaced Lemonade CORE with Lemonade CO.
+            </p>
+
+            <div class="changelog-images">
+                <div class="image-box">
+                    <img src="https://i.ibb.co/zTHrMJWD/image.png" alt="image">
+                    <span class="image-label">Before</span>
+                </div>
+                <div class="image-box">
+                    <img src="https://i.ibb.co/B5z4ppSW/Screenshot-2026-07-17-12-00-33-PM.png">
+                    <span class="image-label">After</span>
+                </div>
+            </div>
+        </div>
+
+    </</section>
 
 </body>
 </html>
